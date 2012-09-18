@@ -1,0 +1,472 @@
+/*reset begins*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 12px;
+	font: inherit;
+	vertical-align: baseline;
+	font-weight: normal;
+	color: #333;
+	font-family: Helvetica, sans-serif;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font-family: sans-serif;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.flt-left {
+	float: left;
+}
+.flt-right {
+	float: right;
+}
+a {
+	text-decoration: none;
+}
+.bold {
+	font-weight: bold
+}
+a:hover{
+	text-decoration: none;
+}
+/*reset ends*/
+
+.blue-a{
+	width:360px;
+	background-color: #008ab2;
+	float: left;
+}
+.ul-a{
+	text-align: right;
+	padding:300px 5px 0px 0px;
+}
+.ul-b{
+	text-align: right;
+	padding:100px 0px 0px 0px;
+}
+.ul-a li, .ul-b li{
+	position: relative;
+	padding:20px 10px 0px;
+	
+}
+.bg-arrow-right-a{
+	position: absolute;
+	right: -6px;
+	top: 23px;
+}
+
+.bg-logo-a{
+	margin-top:300px;
+}
+
+.login-nav, .inside-nav{
+	height: 800px;
+}
+
+.textbox-a{
+	border: 1px solid #b8b8b8;
+	box-shadow: 0px 2px 0px 0px #b8b8b8;
+	padding: 12px;
+	font-size: 11px;
+	color: #a7a5a6;
+	margin:10px;
+}
+
+.btn-a,.btn-b{
+	border: 1px solid #1895b9;
+	background-color: #008ab2;
+	color: #fff;
+	box-shadow: 0px 3px 0px 0px #276577;
+	font-size: 13px;
+	padding: 9px 18px;
+	font-weight: bold;
+}
+.btn-b{
+	padding: 5px 10px;
+}
+.main-a{
+	padding-top:374px;
+}
+.text-email{
+	margin-left:30px;
+	width:200px;
+}
+
+.blue-b{
+	width:180px;
+	background-color: #008ab2;
+	float: left;
+	
+}
+.nav-a{
+	float: right;
+	margin-top: 7px;
+}
+.nav-a li{
+	display: inline;
+	float: left;
+	margin:0px 5px;
+	color: #cce8f0;
+	font-size:11px;
+}
+.nav-a li a{
+	color: #cce8f0;
+	font-size:11px;
+	font-weight: bold;
+}
+.topper{
+	overflow: hidden;
+	text-align: right;
+	padding:30px 10px;
+}
+.mc-a{
+	padding:30px 50px;
+	float: left;
+	
+}
+.table-a{
+	width:770px;
+	margin-top:20px;
+}
+.table-a td{
+	padding:10px;
+}
+
+.table-a thead{
+	background-color: #f4f4f4;
+	border-bottom: 2px solid #cecece;
+}
+.table-a tr td{
+	border-right: 1px solid #e1e1e1;
+}
+.table-a thead td h5{
+	position: relative;
+}
+.table-a thead td:first-child{
+	box-shadow:0px 3px #008ab2;
+}
+.table-a tr td:last-child{
+	border-right:none;
+}
+
+.table-a thead tr td h5 i{
+	position: absolute;
+	right: 5px;
+}
+
+.tr-even{
+	height: 35px;
+}
+.tr-odd{
+	height: 45px;
+}
+
+.tr-even{
+	background-color: #f4f4f4;
+}
+.tr-odd td{
+	padding: 15px 10px;
+}
+
+.file{
+	 border: 1px solid #b8b8b8;
+	 box-shadow: 0px 2px 0px 0px #b8b8b8;
+	 padding: 12px;
+	 font-size: 11px;
+	 color: #a7a5a6;
+	 margin:10px;
+	
+}
+.clip-b-img, .question-a-img, .arrow-down-b-img,.right-b-img,.right-b-img,.clip-a-img, .plus-a-img,.right-a-img,.cross-a-img {
+	margin: 0px 5px;
+}
+.question-a-img,  .arrow-down-b-img,.right-b-img,.clip-a-img,.right-a-img,.cross-a-img,.right-b-img{
+	position: relative;
+	top:2px;
+}
+.alt-a,.alt-b{
+	position: relative;
+}
+.alt-b{
+	display: none;
+}
+
+
+.table-a tbody tr:hover{
+	background-color: #9a9a9a;
+}
+
+.table-a tbody tr:hover td{
+	border-right:1px solid transparent;
+}
+
+.table-a tbody tr:hover .alt-a{
+	display: none;
+}
+
+.table-a tbody tr:hover .alt-b{
+	display: block;
+}
+
+.table-a tbody tr:hover .label-4{
+	color: #fff;
+}
+
+.td-d{
+width:120px;
+}
+
+.arrow-down-b-img:hover{
+	cursor: pointer;
+}
+
+
+
+
+.arrow-left-a-img, .plus-a-img{
+	margin-right:15px;
+}
+.my-expenses-btn{
+	margin-bottom: 100px;
+}
+.add-expenses-btn{
+	margin-bottom: 20px;
+}
+textarea.textbox-a{
+	width:480px;
+	height: 100px;
+	margin: 30px 0px 10px;
+	font-size:11px;
+	font-family: Helvetica,sans-serif;
+}
+.arrow-down-c-img{
+	float: right;
+	margin:3px 3px 0px 0px;
+}
+.dd-a{
+	margin-left:0px;
+	width:200px;
+}
+.dd-a:hover{
+	cursor: pointer;
+	background-color: #e9e9e9;
+}
+.action-a{
+	overflow: hidden;
+}
+.action-a .textbox-a{
+	margin-top:5px;
+}
+.add-expense-btn{
+	margin-top:5px;
+}
+
+button:hover{
+	cursor: pointer;
+}
+.bg-cross-b{
+	float: right;
+	position: relative;
+	top:2px;
+	margin-left:10px;
+}
+
+.bg-cross-c{
+	float: right;
+	position: relative;
+	top:2px;
+	margin-left:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.label-4 .red{
+	color: #ff0000;
+}
+.label-4 .green{
+	color: #2cac0f;
+}
+.label-7{
+	color: #a7a5a6;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.label-7:hover{
+	text-decoration: underline;
+}
+.label-6{
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+}
+.label-5{
+	color: #7f7f7f;
+	font-size: 12px;
+	font-weight: bold;
+}
+.label-4{
+	font-size: 12px;
+	color: #000;
+}
+.label-3{
+	font-size: 13px;
+	color: #000;
+	font-weight: bold;
+}
+
+.label-2{
+	color: #000;
+	font-size: 24px;
+}
+
+.label-1{
+	font-size: 20px;
+	color: #bfe2ec;
+}
+
+
+
+
+
+/*pagination-begins*/
+#tata{
+	margin-top:20px;
+}
+.pagination {
+    height: 36px;
+    width:327px;
+    margin: 0 auto;
+}
+
+.pagination ul {
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 0;
+     padding: 5px 10px;
+     background-color: #efefef;
+     border: 1px solid #e0e0e0;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination li:first-child a {
+    border-left-width: 1px;
+    border-radius: 3px 0 0 3px;
+}
+
+.pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover {
+    background-color: transparent;
+    color: #999999;
+    cursor: default;
+}
+
+
+.pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover {
+    background-color: transparent;
+    color: #999999;
+    cursor: default;
+}
+
+
+
+
+.pagination a {
+    background-color: #FFFFFF;
+    border: 1px solid #C9C9C9;
+    border-radius: 2px 2px 2px 2px;
+    color: #717171;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 23px;
+    margin-right: 1px;
+    padding: 0 9px;
+    display: inline-block;
+}
+
+
+.pagination a:hover, .pagination .active a {
+    background-color: #676767;
+    box-shadow: 0 0 2px 0 #505050 inset;
+    color: #FFFFFF;
+}
+
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	/* border: 3px solid #ff0000; */
+	/* padding: 10px; */
+	/* margin: 12px; */
+	padding:5px 0px 0px 0px;
+	left: 50px;
+	right: 50px;
+}
+
+/*pagination ends*/
+
+
+
+
+

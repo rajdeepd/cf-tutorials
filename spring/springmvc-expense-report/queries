@@ -1,0 +1,48 @@
+
+###INSERT_ QUERIES
+insert into role values(1,'ROLE_USER');
+
+insert into role values(2,'ROLE_MANAGER');
+
+insert into users values(1,'s@s.com',true,'abcd','abcd',1);
+
+insert into expenseType values(1,'MEDICAL');
+
+insert into expenseType values(2,'TRAVEL');
+
+insert into expenseType values(3,'TELEPHONE');
+
+insert into expenseType values(4,'GYM');
+
+insert into expenseType values(5,'EDUCATION');
+
+##SELECT_ QUERIES
+
+select * from users;
+
+select * from role;
+
+select * from attachment;
+
+select * from expense;
+
+select * from expensetype;
+
+select * from expensereport;
+
+####DROP_ TABLES
+
+
+drop table users cascade;
+
+drop table role cascade;
+
+drop table attachment cascade;
+
+drop table expense cascade;
+
+drop table expensetype cascade;
+
+drop table expenseReport cascade;
+
+
