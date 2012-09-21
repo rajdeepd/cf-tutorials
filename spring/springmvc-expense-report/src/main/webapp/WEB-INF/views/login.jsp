@@ -32,6 +32,7 @@
 					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 				</div>
 			</c:if>
+			${errorMsg}
 			<form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
 				<input class="textbox-a text-email" type="text" placeholder="Username" name="j_username" required="required">
 				<input class="textbox-a" type="password" placeholder="Password" name="j_password" required="required">
