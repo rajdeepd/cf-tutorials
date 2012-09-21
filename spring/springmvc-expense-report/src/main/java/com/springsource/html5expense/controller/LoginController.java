@@ -114,6 +114,13 @@ public class LoginController {
  
 	}
 	
+	@RequestMapping(value="/sessionTimeout",method = RequestMethod.GET)
+	public String sessionTimeout(ModelMap model){
+		String errorMsg = "Session has expired .Please login";
+		model.addAttribute("errorMsg",errorMsg);
+		return "login";
+	}
+	
 
 	public ExpenseService getExpenseService() {
 		return expenseService;
