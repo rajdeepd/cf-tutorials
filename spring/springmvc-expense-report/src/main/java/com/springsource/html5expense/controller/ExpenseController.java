@@ -92,7 +92,7 @@ public class ExpenseController {
 	public String loadApprovedExpenses(ModelMap model){
 		List<Expense> approvedExpenseList = getExpenseService().getPendingExpensesList();
 		model.addAttribute("approvedExpenseList", approvedExpenseList);
-		return "4";
+		return "expenseapproval";
 		
 	}
 	
@@ -115,7 +115,7 @@ public class ExpenseController {
 		List<ExpenseType> expenseTypeList = expenseTypeService.getAllExpenseType();
 		request.setAttribute("expenseTypeList", expenseTypeList);
 		request.setAttribute("isEdit", "true");
-		return "3";
+		return "newexpense";
 	}
 	
 	@RequestMapping(value="/changeState",method=RequestMethod.POST)
@@ -125,7 +125,7 @@ public class ExpenseController {
 		getExpenseService().changeExpenseStatus(new Long(expenseId), action);
 		List<Expense> approvedExpenseList = getExpenseService().getPendingExpensesList();
 		request.setAttribute("approvedExpenseList", approvedExpenseList);
-		return "4";
+		return "expenseapproval";
 	}
 	
 	
@@ -145,7 +145,7 @@ public class ExpenseController {
 		List<Expense> pendingExpenseList = getExpenseService().getExpensesByUser(user);
 		request.setAttribute("pendingExpenseList",pendingExpenseList);
 		
-		return "usermain";
+		return "myexpense";
 	}
 	
 	@RequestMapping(value="/createNewExpenseReport",method = RequestMethod.POST)
@@ -161,8 +161,6 @@ public class ExpenseController {
 		String contentType = "";
 		if(file!=null){
 			try{
-            @SuppressWarnings("deprecation")
-            Blob content = Hibernate.createBlob(file.getInputStream());
             fileName =file.getOriginalFilename();
             contentType = file.getContentType();
             Attachment attachment = new Attachment(fileName, contentType,  file.getBytes());
@@ -182,7 +180,7 @@ public class ExpenseController {
 	
 		List<ExpenseType> expenseTypeList = expenseTypeService.getAllExpenseType();
 		model.addAttribute("expenseTypeList", expenseTypeList);
-		return "3";
+		return "newexpense";
 	}
 	
 }

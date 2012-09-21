@@ -55,7 +55,7 @@ public class LoginController {
 		List<Expense> pendingExpenseList = getExpenseService().getExpensesByUser(user);
 		model.addAttribute("pendingExpenseList",pendingExpenseList);
 		request.getSession().setAttribute("user", user);
-		return "usermain";
+		return "myexpense";
  
 	}
 	

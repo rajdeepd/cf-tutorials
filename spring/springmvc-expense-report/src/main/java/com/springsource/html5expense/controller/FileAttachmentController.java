@@ -50,8 +50,6 @@ public class FileAttachmentController {
 	         
 	        try {
 	        	
-	            @SuppressWarnings("deprecation")
-				Blob content = Hibernate.createBlob(file.getInputStream());
 	            String fileName =file.getOriginalFilename();
 	            String contentType = file.getContentType();
 	            Attachment attachment = new Attachment(fileName, contentType, file.getBytes());
