@@ -24,6 +24,7 @@ import org.apache.commons.collections.map.HashedMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -56,16 +57,17 @@ import com.springsource.html5expense.serviceImpl.JpaRoleServiceImpl;
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = {Expense.class,JpaExpenseServiceImpl.class,LoginController.class,
 		Attachment.class,ExpenseService.class,FileAttachmentController.class,JpaRoleServiceImpl.class})
+@PropertySource("/config.properties")
 public class ComponentConfig {
 
 	
 	@Bean
     public DataSource dataSource()  {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", "192.168.6.30", 5432, "postgres"));
+        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", "${database.host}", "${database.port}", "${database.name}"));
         dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("pramati123");
+        dataSource.setUsername("${database.username}");
+        dataSource.setPassword("${database.password}");
         return dataSource;
     }
 	
