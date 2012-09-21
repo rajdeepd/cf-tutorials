@@ -11,7 +11,7 @@
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
  
 			<property name="driverClass" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
+			<property name="url" value="jdbc:postgresql://192.168.6.30:5432/rr" />
 			<property name="username" value="postgres" />
 		<property name="password" value="postgres" />
 		
@@ -21,15 +21,15 @@
     <property name="dataSource" ref="dataSource"/>
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-      	<property name="showSql" value="true" />
+        <property name="showSql" value="true" />
       	<property name="database" value="POSTGRESQL" />
-      	<property name="generateDdl" value="true" />
       </bean>
     </property>
     <property name="jpaPropertyMap">
     <props>
      	<prop key="showSql">true</prop>
-        <prop key="generateDdl">true</prop>
+       	<prop key="hibernate.hbm2ddl.auto">create</prop>
+        <prop key="hibernate.hbm2ddl.import_files" >import.sql</prop>
         <prop key="database">POSTGRESQL</prop>
         <prop key="databasePlatform">org.hibernate.dialect.PostgreSQLDialect</prop>
       </props>
