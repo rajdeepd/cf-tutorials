@@ -31,16 +31,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.authentication.JdbcUserServiceBeanDefinitionParser;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.springsource.html5expense.controller.FileAttachmentController;
 import com.springsource.html5expense.controller.LoginController;
@@ -90,6 +84,8 @@ public class ComponentConfig {
 	public Map<String,String> createPropertyMap()
 	{
 		Map<String,String> map= new HashedMap();
+		map.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");
+		map.put(org.hibernate.cfg.Environment.HBM2DDL_IMPORT_FILES, "import.sql");
 		map.put("hibernate.c3p0.min_size", "5");
 		map.put("hibernate.c3p0.max_size", "20");
 		map.put("hibernate.c3p0.timeout", "360000");
@@ -128,43 +124,5 @@ public class ComponentConfig {
 		multiPartResolver.setMaxUploadSize(10000000);
 		return multiPartResolver;
 	}
-	
-	public AuthenticationManager authenticationManager(){
-		JdbcUserServiceBeanDefinitionParser jdbcUserService = new JdbcUserServiceBeanDefinitionParser();
-		AuthenticationManager authManager = new AuthenticationManager() {
-			
-			@Override
-			public Authentication authenticate(Authentication arg0)
-					throws AuthenticationException {
-				// TODO Auto-generated method stub
-				AuthenticationProvider authProvider = new AuthenticationProvider() {
-					
-					
-					@Override
-					public boolean supports(Class<? extends Object> arg0) {
-						// TODO Auto-generated method stub
-						return false;
-					}
-					
-					
-					@Override
-					public Authentication authenticate(Authentication arg0)
-							throws AuthenticationException {
-						// TODO Auto-generated method stub
-						return null;
-					}
-				};
-				return null;
-			}
-		};
-		return authManager;
-	}
-	
-	/*@Bean
-	public ExpenseService getExpenseService(){
-		JpaExpenseServiceImpl expenseService = new JpaExpenseServiceImpl();
-		expenseService.setEntityManager(entityManagerFactory());
-		return expenseService;
-	}*/
 	
 }
