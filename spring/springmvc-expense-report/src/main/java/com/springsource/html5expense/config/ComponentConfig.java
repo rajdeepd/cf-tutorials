@@ -24,6 +24,7 @@ import org.apache.commons.collections.map.HashedMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -55,19 +56,19 @@ import com.springsource.html5expense.serviceImpl.JpaRoleServiceImpl;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = {Expense.class,JpaExpenseServiceImpl.class,LoginController.class,
-		Attachment.class,ExpenseService.class,FileAttachmentController.class,JpaRoleServiceImpl.class})
 @PropertySource("/config.properties")
+@ImportResource({ "classpath:spring-security.xml"})
+
 public class ComponentConfig {
 
 	
 	@Bean
     public DataSource dataSource()  {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", "${database.host}", "${database.port}", "${database.name}"));
+        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", "localhost", "5432", "postgres"));
         dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("${database.username}");
-        dataSource.setPassword("${database.password}");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres");
         return dataSource;
     }
 	

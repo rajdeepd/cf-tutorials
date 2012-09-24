@@ -39,8 +39,6 @@ import com.springsource.html5expense.serviceImpl.JpaExpenseServiceImpl;
 
 
 @Configuration
-@ComponentScan(basePackageClasses = {JpaExpenseServiceImpl.class,Expense.class,
-		ExpenseController.class})
 @Import(ComponentConfig.class)
 @PropertySource("/config.properties")
 @EnableWebMvc
