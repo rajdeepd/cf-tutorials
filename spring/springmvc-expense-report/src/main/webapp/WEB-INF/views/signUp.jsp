@@ -5,46 +5,40 @@
 		<title>1</title>
 		<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<!-- <style type="text/css">
-		
-		input:required {
- 			border-style:solid;
- 			border-width:thick;
-		}
-		input:valid {
- 			background-color: #adff2f;
-		}
-		input:invalid {
- 			background-color: #f08080;
-		}
-		input:out-of-range {
- 			background-color: #808080;
-		}
-		input:in-range {
-			background-color: #8a2be2;
-		}
-		
-		</style> -->
-		<script type="text/javascript">
-		
-		function ValidateEmail() 
-		{
-	     var email = document.getElementById("email");
-	     var errorblock = document.getElementById("errorblock");
-	     if(email!=null && email.value!=""){
-		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))
-		  {
-			 alert("email1"+email.value);
-		    return true;
-		  }
-		 	errorblock.innerHTML = "Please Enter valid Email Address";
-		    return false;
-	     }else{
-	    	 alert("please enter email address!");
-	    	 return false;
-	     }
-		}
-		</script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+  		<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+		<style type="text/css">
+		* { font-family: Verdana; font-size: 96%; }
+			label { width: 10em; float: left; }
+			label.error { float: none; color: red; vertical-align: bottom;
+	        padding:100px 0px 0px 0px; display:inline}
+			p { clear: both; }
+			.submit { margin-left: 12em; }
+			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+		</style>
+  		<script>
+  			$(document).ready(function(){
+    		$("#signupForm").validate({
+    			   rules: {
+    				     userName: "required",
+    				     password: "required",
+    				     email: {
+    				       required: true,
+    				       email: true
+    				     }
+    				   },
+    				   messages: {
+    				     userName: "Please enter your user name",
+    				     password: "Please enter your password",
+    				     email: {
+    				       required: "Please enter your email",
+    				       email: "Your email address must be in the format of name@domain.com"
+    				     }
+    				   }
+    				});
+  			});
+  		</script>
+	
 	</head>
 	<body>
 		<div class="blue-a">
@@ -74,9 +68,9 @@
 				</div>
 			</c:if>
 		<br><br><br>
-			 <form action="${pageContext.request.contextPath}/signUpUser" method="post">
+			 <form action="${pageContext.request.contextPath}/signUpUser" method="post" id="signupForm">
 					<input class="textbox-a text-email" type="email" placeholder="Email" id="email" name="email" required="required" >
-					<input class="textbox-a" type="text" placeholder="UserName" id="userName" name="userName" required="required">
+					<input class="textbox-a" type="text" placeholder="UserName" id="userName" name="userName" required="required" >
 					<input class="textbox-a" type="password" placeholder="Password" id="password" name="password" required="required">
 					<button class="btn-a">Submit</button>
 			</form>

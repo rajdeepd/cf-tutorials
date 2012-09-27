@@ -31,25 +31,10 @@ public class FileAttachmentController {
 	 	
 	 	@Autowired
 	 	private AttachmentService attachmentService;
-	     
-	    @RequestMapping("/index")
-	    public String index(Map<String, Object> map) {
-	        try {
-	            map.put("attachment", new Attachment());
-	            map.put("documentList", attachmentService.getAttachmentByExpenseId(new Long(1)));
-	        }catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	 
-	        return "documents";
-	    }
-	 
+	     	 
 	    @RequestMapping(value = "/save", method = RequestMethod.POST)
 	    public String save(@RequestParam("file") MultipartFile file) {
-	         
-	         
 	        try {
-	        	
 	            String fileName =file.getOriginalFilename();
 	            String contentType = file.getContentType();
 	            Attachment attachment = new Attachment(fileName, contentType, file.getBytes());
@@ -57,47 +42,21 @@ public class FileAttachmentController {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	         
-	         
-	        return "redirect:/index.html";
+	        return "redirect:/";
 	    }
 	    
 	    @RequestMapping(value="/download")
 	    public void download(HttpServletRequest request,HttpServletResponse response) throws Exception{
 	    	String attachmentId = request.getParameter("attachmentId");
-	    	 //int id = ServletRequestUtils.getRequiredIntParameter(request, "id");
-	    	 
-	    	  
-	    	 
 	    	         Attachment  attachment = this.attachmentService.getAttachment(new Long(attachmentId));
-	    	 
-	    	  
-	    	 
 	    	         response.setContentType(attachment.getContentType());
-	    	 
-	    	        // response.setContentType("BLOB");
-	    	 
 	    	         response.setHeader("Content-Disposition","attachment; filename=\"" + attachment.getFileName() +"\"");
 	    	         response.setHeader("cache-control", "must-revalidate");
-	    	  
-	    	 
-	    	       //  FileCopyUtils.copy(attachment.getContent().getBinaryStream(), response.getOutputStream());
 	    	         OutputStream out = response.getOutputStream();
-	    	         //out.write(file.getFileData().getBytes(1, (int) file.getFileData().length()));
 	    	         out.write(attachment.getContent());
 	    	         out.flush();
-	    	  
-	    	 
-	    	         //return null;
 
 	    }
-	    
-	    /*@RequestMapping(value="/",method = RequestMethod.GET)
-	    public String displayMessage(Map<String, Object> map, Principal principal ){
-	    	
-	    	return "login";
-	    }*/
-	 
-	   
+	      
 	
 }

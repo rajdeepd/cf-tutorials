@@ -464,6 +464,18 @@ button:hover{
 	right: 50px;
 }
 
+
+.successblock {
+	color: green;
+	background-color: #ffEEEE;
+	/* border: 3px solid #ff0000; */
+	/* padding: 10px; */
+	/* margin: 12px; */
+	padding:5px 0px 0px 0px;
+	left: 50px;
+	right: 50px;
+}
+
 /*pagination ends*/
 
 

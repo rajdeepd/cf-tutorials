@@ -8,6 +8,42 @@
 		<title>3</title>
 		<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+  		<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+  		<style type="text/css">
+		* { font-family: Verdana; font-size: 96%; }
+			label { width: 10em; float: left; }
+			label.error { float: none; color: red; vertical-align: bottom;
+	        padding:100px 0px 0px 0px; display:inline}
+			p { clear: both; }
+			.submit { margin-left: 12em; }
+			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+		</style>
+  		<script>
+  			$(document).ready(function(){
+    		$("#newexpenseForm").validate({
+    			   rules: {
+    				     description: "required",
+    				     amount: "required",
+       				   },
+    				   messages: {
+    				     description: "Please enter description",
+    				     amount: "Please enter amount",
+    				    }
+    				});
+  			$("#editExpenseForm").validate({
+ 			   rules: {
+ 				     description: "required",
+ 				     amount: "required digits",
+    				   },
+ 				   messages: {
+ 				     description: "Please enter description",
+ 				     amount: "Please enter amount",
+ 				    }
+ 				});
+    		
+  			});
+  		</script>
 	</head>
 	<body>
 		<div class="blue-b">
@@ -48,14 +84,12 @@
 			<button class="btn-b my-expenses-btn"><img class="arrow-left-a-img" src="<c:url value="/resources/images/arrow-left-a.png" /> ">My Expenses
 			</button>
 			<h2 class="header label-2"> Editing an expense </h2>
-			<form action="${pageContext.request.contextPath}/updateExpense" method="post" enctype="multipart/form-data">
-			<textarea class="textbox-a" id="description" name="description" placeholder="description">${expense.description}</textarea><br>
+			<form action="${pageContext.request.contextPath}/updateExpense" method="post" enctype="multipart/form-data" id="editExpenseForm">
+			<textarea class="textbox-a" id="description" name="description" required="required" placeholder="description">${expense.description}</textarea><br>
 			<input type="hidden" name="expenseId" id="expenseId" value="${expense.id}" />
-			<input class="textbox-a" type="text" placeholder="Amount" name="amount" value="${expense.amount}"></input>
+			<input class="textbox-a" type="number" placeholder="Amount" name="amount" required="required digits" value="${expense.amount}"></input>
 			<div class="action-a">
-				<!-- <div class="textbox-a dd-a flt-left">
-				Select Type <img class="arrow-down-c-img" src="<c:url value="/resources/images/arrow-down-c.png" />">  -->
-				<select id="expenseTypeId" name="expenseTypeId">
+				<select id="expenseTypeId" name="expenseTypeId" required="required">
 					<c:forEach var="expenseType" items="${expenseTypeList}">
 						
   					    <c:if test="${expense.expenseType.name eq expenseType.name }">
@@ -65,10 +99,8 @@
 							<option value="${expenseType.id}">${expenseType.name}</option>
 						</c:if>
 					</c:forEach>
-				</select>
-				<!-- </div> -->
-				<%-- <a class="label-7 flt-right" href="#"><img class="clip-a-img" src="<c:url value="/resources/images/clip-a.png" />"> --%>
-				 <input type="file" name="file" id="file" class="file" /> <!-- Attach Receipt </a> -->
+				</select><br>
+				 <input type="file" name="file" id="file" class="file" /> 
 			</div>
 			<button class="btn-a add-expense-btn">SAVE EXPENSE</button>
 			</form>
@@ -79,22 +111,18 @@
 			<button class="btn-b my-expenses-btn"><img class="arrow-left-a-img" src="<c:url value="/resources/images/arrow-left-a.png" /> ">My Expenses
 			</button>
 			<h2 class="header label-2"> Adding new expense </h2>
-			<form action="${pageContext.request.contextPath}/createNewExpenseReport" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/createNewExpenseReport" method="post" enctype="multipart/form-data" id="newexpenseForm">
 			<textarea class="textbox-a" id="description" name="description" placeholder="description" required="required"  ></textarea><br>
-			<input class="textbox-a" type="number" placeholder="Amount" name="amount" required="required"  max="100000" ></input>
+			<input class="textbox-a" type="number" placeholder="Amount" required="required digits" name="amount" max="100000" ></input>
 			<div class="action-a">
-			<!-- 	<div class="textbox-a dd-a flt-left"> -->
 				<select id="expenseTypeId" name="expenseTypeId" style="	border: 1px solid #b8b8b8;
-	            box-shadow: 0px 2px 0px 0px #b8b8b8;padding: 12px;font-size: 11px;color: #a7a5a6;width:100px;	margin:10px;">
+	            box-shadow: 0px 2px 0px 0px #b8b8b8;padding: 12px;font-size: 11px;color: #a7a5a6;width:100px;	margin:10px;" required="required">
 					<option value="">                         </option>
 					<c:forEach var="expenseType" items="${expenseTypeList}">
 						<option value="${expenseType.id}">    ${expenseType.name}    </option>
 					</c:forEach>
-				</select>
-				<!-- </div>
-				 <a class="label-7 flt-right" href="#"><img class="clip-a-img" src="<c:url value="/resources/images/clip-a.png" />">  -->
+				</select><br>
 				 <input type="file" name="file" id="file" title="Attachment"  class="file"/>
-			    <!-- </a> -->
 			</div>
 			<button class="btn-a add-expense-btn">ADD EXPENSE</button>
 			</form>

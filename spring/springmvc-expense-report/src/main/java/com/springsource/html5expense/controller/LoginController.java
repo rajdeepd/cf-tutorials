@@ -79,7 +79,8 @@ public class LoginController {
 		if(user == null){
 			Role role = getRoleService().getRoleByName("ROLE_USER");
 			user = getUserService().createUser(userName, password, mailId,role);
-			return "redirect:/login";
+			String succMsg = "User registration succeeds ";
+			return "redirect:/login?succMsg="+succMsg;
 			
 		}else{
 			String errorMsg = "User registration fails already same user name exists please try " +
