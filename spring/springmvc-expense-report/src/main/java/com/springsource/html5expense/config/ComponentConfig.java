@@ -51,8 +51,6 @@ import com.springsource.html5expense.serviceImpl.JpaRoleServiceImpl;
  * Loads externalized property values required to configure the various application properties.
  * Not much else here, as we rely on @Component scanning in conjunction with @Inject by-type autowiring.
  *
- * @author Keith Donald
- * @author Josh Long
  */
 @Configuration
 @EnableTransactionManagement
@@ -122,10 +120,10 @@ public class ComponentConfig {
 	}
 	
 	@Bean
-	public MultipartResolver multiPartResolver(){
-		CommonsMultipartResolver multiPartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
-		multiPartResolver.setMaxUploadSize(10000000);
-		return multiPartResolver;
+	public MultipartResolver multipartResolver(){
+		CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(10000000);
+		return multipartResolver;
 	}
 	
 }
