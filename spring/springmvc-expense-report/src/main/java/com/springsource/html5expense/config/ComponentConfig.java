@@ -37,14 +37,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.springsource.html5expense.controller.FileAttachmentController;
-import com.springsource.html5expense.controller.LoginController;
-import com.springsource.html5expense.model.Attachment;
+import com.springsource.html5expense.controller.ExpenseController;
 import com.springsource.html5expense.model.Expense;
-import com.springsource.html5expense.service.ExpenseService;
 import com.springsource.html5expense.serviceImpl.JpaExpenseServiceImpl;
-import com.springsource.html5expense.serviceImpl.JpaRoleServiceImpl;
 
 /**
  * Configuration for application @Components such as @Services, @Repositories, and @Controllers.
@@ -56,6 +53,7 @@ import com.springsource.html5expense.serviceImpl.JpaRoleServiceImpl;
 @EnableTransactionManagement
 @PropertySource("/config.properties")
 @ImportResource({ "classpath:spring-security.xml"})
+@ComponentScan(basePackageClasses = {JpaExpenseServiceImpl.class,ExpenseController.class,Expense.class})
 
 public class ComponentConfig {
 
@@ -125,5 +123,13 @@ public class ComponentConfig {
 		multipartResolver.setMaxUploadSize(10000000);
 		return multipartResolver;
 	}
+	
+	@Bean
+    public InternalResourceViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        internalResourceViewResolver.setPrefix("/WEB-INF/views/");
+        internalResourceViewResolver.setSuffix(".jsp");
+        return internalResourceViewResolver;
+    }
 	
 }
