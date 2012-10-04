@@ -21,11 +21,13 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -56,15 +58,19 @@ import com.springsource.html5expense.serviceImpl.JpaExpenseServiceImpl;
 @ComponentScan(basePackageClasses = {JpaExpenseServiceImpl.class,ExpenseController.class,Expense.class})
 
 public class ComponentConfig {
+	
+	@Autowired
+	Environment env;
 
 	
 	@Bean
     public DataSource dataSource()  {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", "localhost", "5432", "postgres"));
+        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", env.getProperty("database.host"), env.getProperty("database.port"),
+        		    env.getProperty("database.name")));
         dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setUsername(env.getProperty("database.username"));
+        dataSource.setPassword(env.getProperty("database.password"));
         return dataSource;
     }
 	
