@@ -62,7 +62,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/signUp",method=RequestMethod.GET)
 	public String signUp(){
-		String name="signUp";
+		String name="signup";
 		
 		return name;
 		
