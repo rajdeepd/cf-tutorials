@@ -1,133 +1,228 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<title>3</title>
-		<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-  		<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
-  		<style type="text/css">
-		* { font-family: Verdana; font-size: 96%; }
-			label { width: 10em; float: left; }
-			label.error { float: none; color: red; vertical-align: bottom;
-	        padding:100px 0px 0px 0px; display:inline}
-			p { clear: both; }
-			.submit { margin-left: 12em; }
-			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
-		</style>
-  		<script>
-  			$(document).ready(function(){
-    		$("#newexpenseForm").validate({
-    			   rules: {
-    				     description: "required",
-    				     amount: "required",
-       				   },
-    				   messages: {
-    				     description: "Please enter description",
-    				     amount: "Please enter amount",
-    				    }
-    				});
-  			$("#editExpenseForm").validate({
- 			   rules: {
- 				     description: "required",
- 				     amount: "required digits",
-    				   },
- 				   messages: {
- 				     description: "Please enter description",
- 				     amount: "Please enter amount",
- 				    }
- 				});
-    		
-  			});
-  		</script>
-	</head>
-	<body>
+<head>
+<title>New Expense</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+<style type="text/css">
+* {
+	font-family: Verdana;
+	font-size: 96%;
+}
+
+label {
+	width: 10em;
+	float: left;
+}
+
+label.error {
+	float: none;
+	color: red;
+	vertical-align: bottom;
+	padding: 100px 0px 0px 0px;
+	display: inline
+}
+
+p {
+	clear: both;
+}
+
+.submit {
+	margin-left: 12em;
+}
+
+em {
+	font-weight: bold;
+	padding-right: 1em;
+	vertical-align: top;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$("#newexpenseForm").validate({
+			rules : {
+				description : "required",
+				amount : "required",
+			},
+			messages : {
+				description : "Please enter description",
+				amount : "Please enter amount",
+			}
+		});
+		$("#editExpenseForm").validate({
+			rules : {
+				description : "required",
+				amount : "required digits",
+			},
+			messages : {
+				description : "Please enter description",
+				amount : "Please enter amount",
+			}
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div id="contentWrapper">
 		<div class="blue-b">
 			<div class="inside-nav">
-				<div class="topper">
-					<img class="bg-logo-b" src="<c:url value="/resources/images/logo-b.png" />" />
-					<ul class="nav-a">
-						<li>
-							<a href="#">Hi ${sessionScope.user.userName}</a> 
-						</li>
-						<li>
-							|
-						</li>
-						<li>
-							<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
-						</li>
-					</ul>
+				<div class="logo">
+					<img src="<c:url value="/resources/images/logo.png" />" />
 				</div>
-				<ul class="ul-b">
-					<li>
-						<a class="label-1" href="${pageContext.request.contextPath}/">My Expenses</a>
+				<ul class="nav-a">
+					<li><a href="#">Hi ${sessionScope.user.userName}</a></li>
+					<li>|</li>
+					<li><a href="<c:url value="/j_spring_security_logout" />">Logout</a>
 					</li>
-					<li>
-						<a class="label-1" href="${pageContext.request.contextPath}/createNewExpense">New Expense</a>
-						<i class="bg-arrow-right-a"><img class="arrow-right-a-img" src="<c:url value="/resources/images/arrow-right-a.png" />"></i>
-					</li>
-					<c:if test="${sessionScope.user.role.roleName eq 'ROLE_MANAGER'}">
-						<li>
-							<a class="label-1" href="${pageContext.request.contextPath}/loadApprovalExpenses">Approvals</a>
-						</li>
-				   </c:if>
 				</ul>
 			</div>
 		</div>
+		<div id="nav">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/">My
+						Expenses</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/createNewExpense">New
+						Expense</a></li>
+				<c:if test="${sessionScope.user.role.roleName eq 'ROLE_MANAGER'}">
+					<li><a
+						href="${pageContext.request.contextPath}/loadApprovalExpenses">Approvals</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
+
+
 		<c:choose>
-		<c:when test="${isEdit eq 'true'}">
-			<div class="mc-a">
-			<button class="btn-b my-expenses-btn"><img class="arrow-left-a-img" src="<c:url value="/resources/images/arrow-left-a.png" /> ">My Expenses
-			</button>
-			<h2 class="header label-2"> Editing an expense </h2>
-			<form action="${pageContext.request.contextPath}/updateExpense" method="post" enctype="multipart/form-data" id="editExpenseForm">
-			<textarea class="textbox-a" id="description" name="description" required="required" placeholder="description">${expense.description}</textarea><br>
-			<input type="hidden" name="expenseId" id="expenseId" value="${expense.id}" />
-			<input class="textbox-a" type="number" placeholder="Amount" name="amount" required="required digits" value="${expense.amount}"></input>
-			<div class="action-a">
-				<select id="expenseTypeId" name="expenseTypeId" required="required">
-					<c:forEach var="expenseType" items="${expenseTypeList}">
-						
-  					    <c:if test="${expense.expenseType.name eq expenseType.name }">
-							<option value="${expenseType.id}" selected="selected">${expenseType.name}</option>
-						</c:if>
-						 <c:if test="${expense.expenseType.name ne expenseType.name }">
-							<option value="${expenseType.id}">${expenseType.name}</option>
-						</c:if>
-					</c:forEach>
-				</select><br>
-				 <input type="file" name="file" id="file" class="file" /> 
-			</div>
-			<button class="btn-a add-expense-btn">SAVE EXPENSE</button>
-			</form>
-		</div>
-		</c:when>
-		<c:otherwise>
-		<div class="mc-a">
-			<button class="btn-b my-expenses-btn"><img class="arrow-left-a-img" src="<c:url value="/resources/images/arrow-left-a.png" /> ">My Expenses
-			</button>
-			<h2 class="header label-2"> Adding new expense </h2>
-			<form action="${pageContext.request.contextPath}/createNewExpenseReport" method="post" enctype="multipart/form-data" id="newexpenseForm">
-			<textarea class="textbox-a" id="description" name="description" placeholder="description" required="required"  ></textarea><br>
-			<input class="textbox-a" type="number" placeholder="Amount" required="required digits" name="amount" max="100000" ></input>
-			<div class="action-a">
-				<select id="expenseTypeId" name="expenseTypeId" style="	border: 1px solid #b8b8b8;
-	            box-shadow: 0px 2px 0px 0px #b8b8b8;padding: 12px;font-size: 11px;color: #a7a5a6;width:100px;	margin:10px;" required="required">
-					<option value="">                         </option>
-					<c:forEach var="expenseType" items="${expenseTypeList}">
-						<option value="${expenseType.id}">    ${expenseType.name}    </option>
-					</c:forEach>
-				</select><br>
-				 <input type="file" name="file" id="file" title="Attachment"  class="file"/>
-			</div>
-			<button class="btn-a add-expense-btn">ADD EXPENSE</button>
-			</form>
-		</div>
-		</c:otherwise>
+			<c:when test="${isEdit eq 'true'}">
+				<div class="mc-a">
+					<form action="${pageContext.request.contextPath}/updateExpense"
+						class="mtop80" method="post" enctype="multipart/form-data"
+						id="editExpenseForm">
+						<h2 class="header label-2 mbot20">Editing an expense</h2>
+						<div class="action-a">
+							<label class="label-name" for="expense_description">Description</label>
+							<textarea class="textbox-a" cols="40" id="description"
+								name="description" placeholder="description" rows="20"
+								required="required">${expense.description}</textarea>
+						</div>
+						<input type="hidden" name="expenseId" id="expenseId"
+							value="${expense.id}" />
+						<div class="action-a">
+							<label class="label-name" for="expense_amount">Amount</label> <input
+								class="textbox-a dd-b flt-left mleft0" id="amount" name="amount"
+								placeholder="Amount" size="30" type="text"
+								required="required digits" name="amount" max="100000"
+								value="${expense.amount}"> <a class="label-7 flt-right"
+								href="#" id="attachment-holder"><img class="clip-a-img"
+								src="<c:url value="/resources/images/clip-a.png" />"><span
+								id="attachment-name">Attach Receipt</span> </a> <input id="file"
+								name="file" value="${expense.attachment}" style="display: none;"
+								type="file">
+						</div>
+						<div class="action-a">
+							<label class="label-name" for="expenseTypeId">Expense
+								type</label> <select id="expenseTypeId" name="expenseTypeId"
+								required="required" class="textbox-a dd-a mleft0">
+								<c:forEach var="expenseType" items="${expenseTypeList}">
+
+									<c:if test="${expense.expenseType.name eq expenseType.name }">
+										<option value="${expenseType.id}" selected="selected">${expenseType.name}</option>
+									</c:if>
+									<c:if test="${expense.expenseType.name ne expenseType.name }">
+										<option value="${expenseType.id}">${expenseType.name}</option>
+									</c:if>
+								</c:forEach>
+							</select><br>
+						</div>
+						<button class="btn-a add-expense-btn">SAVE EXPENSE</button>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="mc-a">
+					<form
+						action="${pageContext.request.contextPath}/createNewExpenseReport"
+						class="mtop80" method="post" enctype="multipart/form-data"
+						id="newexpenseForm">
+						<h2 class="header label-2 mbot20">Adding new expense</h2>
+						<div class="action-a">
+							<label class="label-name" for="expense_description">Description</label>
+							<textarea class="textbox-a" cols="40" id="description"
+								name="description" placeholder="description" rows="20"
+								required="required"></textarea>
+						</div>
+						<div class="action-a">
+							<label class="label-name" for="expense_amount">Amount</label> <input
+								class="textbox-a dd-b flt-left mleft0" id="amount" name="amount"
+								placeholder="Amount" size="30" type="text"
+								required="required digits" name="amount" max="100000">
+
+							<a class="label-7 flt-right" href="#" id="attachment-holder"><img
+								class="clip-a-img"
+								src="<c:url value="/resources/images/clip-a.png" />"><span
+								id="attachment-name">Attach Receipt</span> </a> <input id="file"
+								name="file" style="display: none;" type="file">
+						</div>
+
+						<div class="action-a">
+							<label class="label-name" for="expenseTypeId">Expense
+								type</label> <select id="expenseTypeId" name="expenseTypeId"
+								class="textbox-a dd-a mleft0" required="required">
+								<option value=""></option>
+								<c:forEach var="expenseType" items="${expenseTypeList}">
+									<option value="${expenseType.id}">${expenseType.name}
+									</option>
+								</c:forEach>
+							</select><br>
+						</div>
+						<button class="btn-a add-expense-btn">ADD EXPENSE</button>
+					</form>
+					<script type="text/javascript">
+						$(document)
+								.ready(
+										function() {
+											$('#attachment-holder').live(
+													'click',
+													function() {
+														$('#file').trigger(
+																'click');
+													});
+
+											$("input[type='file']")
+													.change(
+															function() {
+																if ($(this)
+																		.val() == "")
+																	$(
+																			'#attachment-name')
+																			.html(
+																					"Attach Receipt");
+																else
+																	$(
+																			'#attachment-name')
+																			.html(
+																					$(
+																							this)
+																							.val()
+																							.replace(
+																									/^.*\\/g,
+																									''));
+															});
+										})
+					</script>
+				</div>
+			</c:otherwise>
 		</c:choose>
-	</body>
+	</div>
+</body>
 </html>

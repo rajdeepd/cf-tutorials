@@ -2,19 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
-		<title>1</title>
+		<title>Sign Up</title>
 		<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
   		<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
 		<style type="text/css">
-		* { font-family: Verdana; font-size: 96%; }
+		 * { font-family: Verdana; font-size: 96%; }
 			label { width: 10em; float: left; }
 			label.error { float: none; color: red; vertical-align: bottom;
-	        padding:100px 0px 0px 0px; display:inline}
+	        padding:20px 0px 10px 0px; display:inline}
 			p { clear: both; }
 			.submit { margin-left: 12em; }
-			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+			em { font-weight: bold; padding-right: 1em; vertical-align: top; } 
 		</style>
   		<script>
   			$(document).ready(function(){
@@ -41,41 +41,53 @@
 	
 	</head>
 	<body>
-		<div class="blue-a">
-			<div class="login-nav">
+	<div id="contentWrapper">
+		<div class="blue-b">
+			<div class="inside-nav">
+				<div class="logo">
+					<img src="<c:url value="/resources/images/logo.png" />" />
+				</div>
 				
-				<ul class="ul-a">
+				<ul class="nav-a">
 					<li>
-						<i class="bg-logo-a"><img src="<c:url value="/resources/images/logo-a.png" /> "></i>
+						<a href="${pageContext.request.contextPath}/login" class="">Login</a>
 					</li>
+					     <li>|</li>
 					<li>
-						<a class="label-1" href="${pageContext.request.contextPath}/login">Login</a>
-					</li>
-					<li>
-						<i class="bg-arrow-right-a"><img class="arrow-right-a-img" src="<c:url value="/resources/images/arrow-right-a.png" /> "></i>
-						<a class="label-1" href="#">Register</a>
+						<a class="selected" href="#">Register</a>
 						
 					</li>
 				</ul>
 			</div>
 		</div>
 		
-		<div class="main-a">
+		<div class="mc-a">
 			<c:if test="${not empty param.errorMsg}">
 			
 				<div class="errorblock">
 					${param.errorMsg}
 				</div>
 			</c:if>
-		<br><br><br>
-			 <form action="${pageContext.request.contextPath}/signUpUser" method="post" id="signupForm">
-					<input class="textbox-a text-email" type="email" placeholder="Email" id="email" name="email" required="required" >
-					<input class="textbox-a" type="text" placeholder="UserName" id="userName" name="userName" required="required" >
-					<input class="textbox-a" type="password" placeholder="Password" id="password" name="password" required="required">
-					<button class="btn-a">Submit</button>
+		<div class="signing-form">
+			 <form action="${pageContext.request.contextPath}/signUpUser" class="new_user" method="post" id="signupForm">
+			 	<div>
+      				<label>Username</label>
+      				<input class="textbox-a" id="userName" name="userName" required="required"  placeholder="UserName" size="30" type="text">
+    			</div>
+    			<div>
+      				<label>Password</label>
+      				<input class="textbox-a" id="password" name="password" placeholder="Password" size="30" type="password" required="required">
+    			</div>
+    			<div>
+      				<label>Email</label>
+      				<input class="textbox-a" id="email" name="email" placeholder="Password Confirmation" size="30" type="email" required="required">
+    			</div>
+    			<div>
+      				<input class="btn-a" name="commit" type="submit" value="Sign Up">
+    			</div>
 			</form>
 		</div>
-		
-		
+		</div>
+		</div>
 	</body>
 </html>

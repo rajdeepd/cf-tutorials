@@ -81,7 +81,6 @@ public class ComponentConfig {
 	    emfb.setDataSource(dataSource());
 	    emfb.setJpaPropertyMap(createPropertyMap());
 	    emfb.setJpaDialect(new HibernateJpaDialect());
-	    emfb.setPersistenceUnitName("sample");
 	    emfb.setPackagesToScan(new String[]{Expense.class.getPackage().getName()});
 	    return emfb;
 	}

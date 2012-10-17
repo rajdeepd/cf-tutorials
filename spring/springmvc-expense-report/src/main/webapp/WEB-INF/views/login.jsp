@@ -2,30 +2,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
-		<title>1</title>
+		<title>Login</title>
 		<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="blue-a">
-			<div class="login-nav">
+	<div id="contentWrapper">
+		<div class="blue-b">
+			<div class="inside-nav">
 				
-				<ul class="ul-a">
+				<div class="logo">
+						<img src="<c:url value="/resources/images/logo.png" />" />
+				</div>
+				
+				<ul class="nav-a">
 					<li>
-						<i class="bg-logo-a"><img src="<c:url value="/resources/images/logo-a.png" /> "></i>
+						<a class="selected" href="#">Login</a>
 					</li>
+					<li>|</li>
 					<li>
-						<a class="label-1" href="#">Login</a>
-						<i class="bg-arrow-right-a"><img class="arrow-right-a-img" src="<c:url value="/resources/images/arrow-right-a.png"/>" ></i>
-					</li>
-					<li>
-						<a class="label-1" href="${pageContext.request.contextPath}/signUp">Register</a>
-						
+						<a class="" href="${pageContext.request.contextPath}/signUp">Register</a>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="main-a">
+		<div class="mc-a">
+		<div class="signing-form">
 			<c:if test="${not empty error}">
 				<div class="errorblock">
 					Your login attempt was not successful, try again.<br /> Caused :
@@ -39,13 +41,22 @@
 			
 			</c:if>
 			${errorMsg}
-			<form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
-				<input class="textbox-a text-email" type="text" placeholder="Username" name="j_username" required="required">
-				<input class="textbox-a" type="password" placeholder="Password" name="j_password" required="required">
-				<button class="btn-a">Login</button>
+			<form action="<c:url value='j_spring_security_check' />" method='POST'>
+				<div>
+					<label>Username</label>
+	  				<input class="textbox-a" id="username" name="j_username" placeholder="UserName" type="text" required="required">
+	  			</div>
+	  			<div>
+	  				<label>Password</label>
+	  				<input class="textbox-a" id="password" name="j_password" placeholder="Password" type="password" required="required">
+	  			</div>
+	  			<div>
+	  				<input class="btn-a" name="commit" type="submit" value="Log in">
+	  			</div>
 			</form>
 		</div>
 		
-		
+		</div>
+		</div>
 	</body>
 </html>
