@@ -65,7 +65,7 @@ public class ComponentConfig {
         dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/test");
         dataSource.setDriverClass(org.postgresql.Driver.class);
         dataSource.setUsername("postgres");
-        dataSource.setPassword("karthikadevi");
+        dataSource.setPassword("postgres");
         return dataSource;
     }
 	
