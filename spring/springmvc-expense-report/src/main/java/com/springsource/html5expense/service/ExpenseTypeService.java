@@ -24,4 +24,6 @@ public interface ExpenseTypeService {
 	public List<ExpenseType> getAllExpenseType();
 	
 	public ExpenseType getExpenseTypeById(Long id);
+	
+	public void save(ExpenseType type);
 }

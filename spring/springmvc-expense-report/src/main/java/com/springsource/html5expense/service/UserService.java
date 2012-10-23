@@ -25,5 +25,7 @@ public interface UserService {
 	public User getUserByUserName(String userName);
 	
 	public User createUser(String userName,String password,String mailId,Role role);
+	
+	public void save(User user);
 
 }

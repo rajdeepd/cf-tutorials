@@ -51,4 +51,9 @@ public class JpaRoleServiceImpl implements RoleService{
 			query.setParameter("roleName", name);
 			return (query.getResultList()!=null && query.getResultList().size()>0)?(Role)query.getResultList().get(0):null;
 	}
+	
+	@Transactional
+	public void save(Role role){
+		entityManager.persist(role);
+	}
 }

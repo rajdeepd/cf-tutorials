@@ -47,5 +47,9 @@ private EntityManager entityManager;
 	public ExpenseType getExpenseTypeById(Long id){
 		return getEntityManager().find(ExpenseType.class, id);
 	}
+	
+	public void save(ExpenseType type){
+		this.entityManager.persist(type);
+	}
 
 }

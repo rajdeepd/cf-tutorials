@@ -68,5 +68,11 @@ public class JpaUserServiceImpl implements UserService{
 		return user;
 		
 	}
+	
+	@Override
+	@Transactional
+	public void save(User user){
+		getEntityManager().persist(user);
+	}
 
 }
