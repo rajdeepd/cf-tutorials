@@ -7,12 +7,14 @@
      					http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components  -->
-	<!-- -->
-  <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
- 	<property name="driverClass" value="org.postgresql.Driver" />
-	<property name="url" value="jdbc:postgresql://192.168.6.30:5432/postgres" />
-	<property name="username" value="postgres" />
-	<property name="password" value="postgres" />
+	<!-- -
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+ 
+			<property name="driverClass" value="org.postgresql.Driver" />
+			<property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
+			<property name="username" value="postgres" />
+		<property name="password" value="postgres" />
+		
    </bean> 
    
    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -21,15 +23,13 @@
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="true" />
       	<property name="database" value="POSTGRESQL" />
-      	<property name="generateDdl" value="true" />
       </bean>
     </property>
     <property name="jpaPropertyMap">
     <props>
      	<prop key="showSql">true</prop>
-       	<!--<prop key="hibernate.hbm2ddl.auto">create</prop>
-       	<prop key="hibernate.default_schema">test</prop>
-        <prop key="hibernate.hbm2ddl.import_files" >import.sql</prop> -->
+       	<prop key="hibernate.hbm2ddl.auto">create</prop>
+        <prop key="hibernate.hbm2ddl.import_files" >import.sql</prop>
         <prop key="database">POSTGRESQL</prop>
         <prop key="databasePlatform">org.hibernate.dialect.PostgreSQLDialect</prop>
       </props>
@@ -37,7 +37,16 @@
     <property name="jpaDialect">
      	<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect">
      	</bean>
-     </property>
+     </property> -->
+   <!-- <property name="jpaPropertyMap">
+    	<props>
+    		<prop key="hibernate.c3p0.min_size">5</prop>
+    		<prop key="hibernate.c3p0.max_size">20</prop>
+    		<prop key="hibernate.c3p0.timeout">1</prop>
+    		<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop> 		
+    	</props>
+    </property> 
+      <property name="persistenceUnitName" value="sample"></property> 
       <property name="packagesToScan" value="com.springsource.html5expense"></property>
   </bean> 
    
@@ -50,8 +59,8 @@
   <bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="10000000" />
-    </bean>
+    </bean> 
  
- <tx:annotation-driven transaction-manager="transactionManager"/>  
+ <tx:annotation-driven transaction-manager="transactionManager"/>  -->
 		
 </beans>
