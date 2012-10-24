@@ -15,20 +15,20 @@
  */
 package com.springsource.html5expense.config;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.collections.map.HashedMap;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.cloudfoundry.runtime.env.CloudEnvironment;
+import org.cloudfoundry.runtime.env.RdbmsServiceInfo;
+import org.cloudfoundry.runtime.service.relational.RdbmsServiceCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -43,23 +43,18 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.springsource.html5expense.controller.ExpenseController;
 import com.springsource.html5expense.model.Expense;
-import com.springsource.html5expense.serviceImpl.JpaExpenseServiceImpl;
+import com.springsource.html5expense.serviceImpl.JpaExpenseReportServiceImpl;
 
-/**
- * Configuration for application @Components such as @Services, @Repositories, and @Controllers.
- * Loads externalized property values required to configure the various application properties.
- * Not much else here, as we rely on @Component scanning in conjunction with @Inject by-type autowiring.
- *
- */
+
 @Configuration
 @EnableTransactionManagement
 //@PropertySource("/config.properties")
 @ImportResource({ "classpath:spring-security.xml"})
-@ComponentScan(basePackageClasses = {JpaExpenseServiceImpl.class,ExpenseController.class,Expense.class})
+@ComponentScan(basePackageClasses = {JpaExpenseReportServiceImpl.class,ExpenseController.class,Expense.class})
 
 public class ComponentConfig {
 		
-	@Bean
+	/*@Bean
     public DataSource dataSource()  {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/test");
@@ -67,10 +62,23 @@ public class ComponentConfig {
         dataSource.setUsername("postgres");
         dataSource.setPassword("postgres");
         return dataSource;
+    }*/
+	
+	@Bean
+    public CloudEnvironment environment() {
+        return new CloudEnvironment();
+    }
+
+    @Bean
+    public DataSource dataSource() throws Exception {
+        CloudEnvironment environment = environment();
+        Collection<RdbmsServiceInfo> mysqlSvc = environment.getServiceInfos(RdbmsServiceInfo.class);
+        RdbmsServiceCreator dataSourceCreator = new RdbmsServiceCreator();
+        return dataSourceCreator.createService(mysqlSvc.iterator().next());
     }
 	
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {
 	    LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
 	    emfb.setJpaVendorAdapter( jpaAdapter());
 	    emfb.setDataSource(dataSource());
@@ -105,7 +113,7 @@ public class ComponentConfig {
 
 
 	@Bean
-	public PlatformTransactionManager transactionManager() {
+	public PlatformTransactionManager transactionManager() throws Exception{
 	    final JpaTransactionManager transactionManager =
 	        new JpaTransactionManager();
 
