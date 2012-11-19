@@ -1,0 +1,30 @@
+<table class="table-a mtop80">
+  <thead>
+  <tr>
+    <td class="td-a">
+      <h5 class="label-3">Date</h5>
+    </td>
+    <td class="td-b">
+      <h5 class="label-3">Type</h5>
+    </td>
+    <td  class="td-c">
+      <h5 class="label-3">Description</h5>
+    </td>
+    <% if params[:action].eql?("approvals") %>
+      <td>
+        <h5 class="label-3">Created By</h5>
+      </td>
+    <% end %>
+    <td  class="td-d">
+      <h5 class="label-3">Status</h5>
+    </td>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @expenses %>
+  </tbody>
+</table>
+
+<div class="pagination pagination-1">
+  <%= paginate @expenses %>
+</div>

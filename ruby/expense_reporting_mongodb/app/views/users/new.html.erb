@@ -1,0 +1,28 @@
+<div class="signing-form">
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages signing-error">
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <label>Username</label>
+      <%= f.text_field :username, :class => "textbox-a", :placeholder => "UserName" %>
+    </div>
+    <div>
+      <label>Password</label>
+      <%= f.password_field :password, :class => "textbox-a", :placeholder => "Password" %>
+    </div>
+    <div>
+      <label>Password Confirmation</label>
+      <%= f.password_field :password_confirmation, :class => "textbox-a", :placeholder => "Password Confirmation" %>
+    </div>
+    <div>
+      <%= f.submit "Sign Up", :class => "btn-a" %>
+    </div>
+  <% end %>
+</div>
