@@ -1,0 +1,23 @@
+<div class="signing-form">
+  <% if @error_message %>
+    <div class="error_messages signing-error">
+      <ul>
+       <li><%= @error_message %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_tag sessions_path do %>
+    <div>
+      <label>Username</label>
+      <%= text_field_tag :username, params[:username], :class => "textbox-a", :placeholder => "UserName" %>
+    </div>
+    <div>
+      <label>Password</label>
+      <%= password_field_tag :password, '', :class => "textbox-a", :placeholder => "Password" %>
+    </div>
+    <div>
+      <%= submit_tag "Log in", :class => "btn-a" %>
+    </div>
+  <% end %>
+</div>

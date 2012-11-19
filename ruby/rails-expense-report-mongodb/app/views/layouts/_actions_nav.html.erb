@@ -1,0 +1,15 @@
+<div id="nav">
+  <ul>
+    <% if current_user.is_admin? %>
+      <li class="<%= params[:action].eql?('approvals') ? 'selected' : '' %>">
+        <%= link_to "Approvals (#{@pending_expenses.count})", approvals_expenses_path() %>
+      </li>
+    <% end %>
+    <li class="<%= params[:action].eql?('index') ? 'selected' : '' %>">
+      <%= link_to "My Expenses", expenses_path %>
+    </li>
+    <li class="<%= ['index', 'approvals'].include?(params[:action]) ? '' : 'selected' %>">
+      <%= link_to "New Expense", new_expense_path %>
+    </li>
+  </ul>
+</div>
