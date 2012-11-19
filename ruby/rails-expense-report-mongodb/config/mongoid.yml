@@ -1,6 +1,6 @@
 development:
   host: localhost
-  database: rails-expense-report-mongodb-development
+  database: rails-expense-report-mongodb_development
 
 test:
   host: localhost
