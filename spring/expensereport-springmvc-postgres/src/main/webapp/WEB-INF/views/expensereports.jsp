@@ -114,5 +114,6 @@
 		   </div>
 		</div>
  </div>
+<input type="hidden" id="contextPath" value="${pageContext.request.contextPath}"/>
 </body>
 </html>
