@@ -65,7 +65,7 @@ public class ExpenseController {
     @ResponseBody
     @RequestMapping(value = "/expenses", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Long createNewExpenseReport(@RequestParam("description")String description
+    public Long createNewExpense(@RequestParam("description")String description
               , @RequestParam("amount")Double amount, @RequestParam("expenseTypeId")Long expenseTypeVal) {
         ExpenseType expenseType = expenseTypeService.getExpenseTypeById(expenseTypeVal);
         User user = getUser();
@@ -77,7 +77,7 @@ public class ExpenseController {
 
     @ResponseBody
     @RequestMapping(value = "/expenses", method = RequestMethod.GET)
-    public List<Expense> getAllExpenseReports() {
+    public List<Expense> getAllExpenses() {
         List<Expense> expenses = expenseService.getExpensesByUser(getUser());
         return expenses;
     }
