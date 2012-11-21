@@ -96,7 +96,7 @@ $(document).ready(function () {
 		var self = $(this);
 		console.log($(".expenseid").val());
 		//console.log("change state url "+'/html5expense/expenses/'+self.attr('id')+'/changestate/'+$("select option:selected").val());
-		$.getJSON(utils.url('/expenses/'+$.trim(self.parents("tr").children("td.expenseid").text()) +'/state/'+$(this).val()), function(jsonResponse) {
+		$.post(utils.url('/expenses/'+$.trim(self.parents("tr").children("td.expenseid").text()) +'/state/'+$(this).val()),{_method:"PUT"}, function(jsonResponse) {
 			$("a[data-tab=approvalsContainer]").click();
 			});
 		

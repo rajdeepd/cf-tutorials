@@ -97,7 +97,7 @@ public class ExpenseController {
 		return approvedExpenseList;
 	}
     
-    @RequestMapping(value = "/expenses/{expenseId}/state/{state}", method = RequestMethod.GET)
+    @RequestMapping(value = "/expenses/{expenseId}/state/{state}", method = RequestMethod.PUT)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public void changeState(@PathVariable("expenseId")Long expenseId, @PathVariable("state")String state){
