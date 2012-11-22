@@ -52,6 +52,7 @@ body {background:#e4e4e4}
 #contentWrapper{
 	width:960px;margin:0 auto;
 	background:#fff;
+	min-height:650px;
 }
 
 .blue-a{
@@ -610,10 +611,10 @@ button:hover{
   color: #0094d4;
   font-weight: bold;
 }
-#nav ul li a:hover,
-#nav ul li.selected a {
+#nav ul li a:hover, #nav ul li.selected a {
   text-decoration: none;
   color: #666;
+  
 }
 /*Navigation tab end*/
 
@@ -639,6 +640,8 @@ div.tabContainer.active{
 
 .pagination {
            font-size: 80%;
+           display: table;
+           margin: 0 auto;
        }
        
 .pagination a {
@@ -665,4 +668,8 @@ div.tabContainer.active{
        color:#999;
        border-color:#999;
        background:#fff;
+}
+
+.masterContainer{
+       clear: both;
 }
