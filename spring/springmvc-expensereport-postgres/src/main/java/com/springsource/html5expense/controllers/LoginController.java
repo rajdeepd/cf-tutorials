@@ -3,10 +3,9 @@ package com.springsource.html5expense.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import com.springsource.html5expense.model.Role;
 import com.springsource.html5expense.model.User;
 import com.springsource.html5expense.services.RoleService;
@@ -27,8 +26,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signUp(ModelMap model, @PathVariable("userName")String userName, @PathVariable("password")String password,
-             @PathVariable("email")String mailId) {
+    public String signUp(ModelMap model, @RequestParam("userName")String userName, @RequestParam("password")String password,
+    		@RequestParam("email")String mailId) {
         User user = userService.getUserByUserName(userName);
         if (user == null) {
             Role role = roleService.getRoleByName("ROLE_USER");
