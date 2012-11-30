@@ -36,5 +36,5 @@ Before you get started, you need the following:
 2. From the root of the project, run `vmc --path target/html5expense-1.0.0-BUILD-SNAPSHOT.war push`.
 
 ### You should also be able to deploy the project using the Maven Cloud Foundry plugin, which is already configured.
-1. From the root of the project, run 'mvn clean install'.
+1. From the root of the project, run `mvn clean install`.
 2. Then run `mvn cf:push -Dcf.username=****** -Dcf.password=**** -Dcf.services=****** -Dcf.url=****` here set your Cloud Foundry username, password, service and application url.
