@@ -4,11 +4,11 @@ This is a simple application that demonstrates how to use Spring MVC and Postgre
 ## Prerequisites
 Before you get started, you need the following:
 
-+  A [Cloud Foundry account](http://cloudfoundry.com/signup)
++  A [Cloud Foundry account](http://cloudfoundry.com/signup).
 
-+  The [vmc](/tools/vmc/installing-vmc.html) Cloud Foundry command line tool
++  The [vmc](/tools/vmc/installing-vmc.html) Cloud Foundry command line tool.
 
-+  A [Spring Tool Suite™ (STS)](http://www.springsource.org/spring-tool-suite-download) installation
++  A [Spring Tool Suite™ (STS)](http://www.springsource.org/spring-tool-suite-download) installation.
 
 +  A [Cloud Foundry plugin for STS](/tools/STS/configuring-STS.html).
 
@@ -36,5 +36,5 @@ Before you get started, you need the following:
 2. From the root of the project, run `vmc --path target/html5expense-1.0.0-BUILD-SNAPSHOT.war push`.
 
 ### You should also be able to deploy the project using the Maven Cloud Foundry plugin, which is already configured.
-1. from the root of the project, run 'mvn clean install'.
-2. then run `mvn cf:push -Dcf.username=****** -Dcf.password=**** -Dcf.services=****** -Dcf.url=****` here set your Cloud Foundry username, password, service and application url.
+1. From the root of the project, run 'mvn clean install'.
+2. Then run `mvn cf:push -Dcf.username=****** -Dcf.password=**** -Dcf.services=****** -Dcf.url=****` here set your Cloud Foundry username, password, service and application url.
