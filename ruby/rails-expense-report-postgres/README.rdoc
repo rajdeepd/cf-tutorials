@@ -49,7 +49,7 @@ This will start the server on http://localhost:3000. Open your browser and load 
 
   bundle exec rake db:create RAILS_ENV=production
 
-* *Bundle the packages*
+* Bundle the packages
 
   bundle package
   bundle install
@@ -62,7 +62,7 @@ to
 
   config.serve_static_assets = true
 
-* *Precompile the assets* by using the following command.
+* Precompile the assets by using the following command.
 
   bundle exec rake assets:precompile
 

@@ -16,11 +16,11 @@ This application is a sample application which is developed in Ruby version 1.9.
   git clone git@github.com:rajdeepd/cf-tutorials.git
 
 * Go to the app folder. Do this by running the below command in terminal.
-
+  
   cd cf-tutorials/ruby/rails-expense-report-mongodb
 
 * Install the gems specified in <tt>Gemfile</tt> by running following command in terminal.
-
+  
   bundle install
 
 * Run the below step to populate the data which is in <tt>db/seeds.rb</tt>.
@@ -28,13 +28,13 @@ This application is a sample application which is developed in Ruby version 1.9.
   bundle exec rake db:seed # For populating the sample data
 
 * If you get an error like <tt>ExecJS::RuntimeUnavailable</tt> while executing the above commands, then add the below line in Gemfile.
-
+  
   gem 'therubyracer'
 
 * Install the above gem by running <tt>bundle install</tt> and then run the above command for populating the database as mentioned in above step.
 
 * Start the server by following comand
-
+  
   rails s
 
 This will start the server on http://localhost:3000. Open your browser and load this url.
@@ -42,32 +42,32 @@ This will start the server on http://localhost:3000. Open your browser and load 
 == Deploying the app on Cloud Foundry
 
 * Create the production database by running the following command in terminal
-
+  
   bundle exec rake db:create RAILS_ENV=production
 
-* *Bundle the packages*
+* Bundle the packages
 
   bundle package
   bundle install
 
 * Change the configuration for serving the static assets to <tt>true</tt>. Do this by modifying the below line in <tt>config/environments/production.rb</tt> file
-
+  
   config.serve_static_assets = false
 
 to
 
   config.serve_static_assets = true
 
-* *Precompile the assets* by using the following command.
-
+* Precompile the assets by using the following command.
+  
   bundle exec rake assets:precompile
 
 * Install <tt>vmc</tt> gem (if not installed previously on your machine) by running the following command. 
-
+  
   gem install vmc
 
 * Set vmc target to *cloudfoundry.com* by running the following command.
-
+  
   vmc target api.cloudfoundry.com
 
 * Login to CloudFoundry using vmc command line tool as shown below.
@@ -77,3 +77,4 @@ to
 * Now push the app to Cloud Foundry by runnig the following commands.
 
   vmc push --runtime ruby19
+  
