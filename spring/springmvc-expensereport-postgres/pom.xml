@@ -257,7 +257,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		<releases> 
 			<updatePolicy>never</updatePolicy> 
 		</releases> 
-</repository> 
+        </repository> 
+        <repository>
+               <id>repository.springframework.maven.milestone</id>
+               <name>Spring Framework Maven Milestone Repository</name>
+               <url>http://maven.springframework.org/milestone</url>
+        </repository>
 </repositories>
  <pluginRepositories>
         <pluginRepository>
@@ -301,6 +306,23 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 <configuration>
 <mainClass>org.test.int1.Main</mainClass>
 </configuration>
+</plugin>
+<!-- -->
+<plugin>
+    <groupId>org.cloudfoundry</groupId>
+    <artifactId>cf-maven-plugin</artifactId>
+    <version>1.0.0.M1</version>
+    <configuration>
+        <target>http://api.cloudfoundry.com</target>
+        <!--<url>expensereport-spring.cloudfoundry.com</url>-->
+        <memory>512</memory>
+        <!--<services>
+            <service>
+               <name>postgresql-16dcd</name>
+               <vendor>postgresql</vendor>
+            </service>
+        </services>-->
+    </configuration>
 </plugin>
 </plugins>
 </build>
