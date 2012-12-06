@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.springsource</groupId>
-    <artifactId>html5expense</artifactId>
-    <name>SpringMVC-ExpenseReport</name>
+    <artifactId>springmvc-expensereport-mongodb</artifactId>
+    <name>SpringMVC ExpenseReport MongoDB</name>
     <version>1.0.0-BUILD-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -46,7 +46,7 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.9</version>
         </dependency>
-        
+
         <!-- CGLIB -->
         <dependency>
             <groupId>cglib</groupId>
@@ -156,7 +156,19 @@
                 <updatePolicy>never</updatePolicy>
             </releases>
         </repository>
+        <repository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -191,6 +203,15 @@
                 <version>1.2.1</version>
                 <configuration>
                     <mainClass>org.test.int1.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>1.0.0.M1</version>
+                <configuration>
+                    <target>http://api.cloudfoundry.com</target>
+                    <memory>512</memory>
                 </configuration>
             </plugin>
         </plugins>
