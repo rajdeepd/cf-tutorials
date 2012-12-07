@@ -23,3 +23,21 @@ This application is a realtime collaborative White board application developed i
     
     node app.js
 
+
+== Deploying the app on Cloud Foundry
+
+* Install <tt>vmc</tt> gem (if not installed previously on your machine) by running the following command. 
+  
+    gem install vmc
+
+* Set vmc target to *cloudfoundry.com* by running the following command.
+  
+    vmc target api.cloudfoundry.com
+
+* Login to CloudFoundry using vmc command line tool as shown below.
+
+    vmc login --email --password
+
+* Now push the app to Cloud Foundry by runnig the following commands.
+
+    vmc push --runtime node08
