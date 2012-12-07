@@ -4,10 +4,10 @@ This application is a realtime collaborative White board application developed i
 
 == Prerequisite
 
-+ [Node.js](http://howtonode.org/how-to-install-nodejs) is installed on your system to build node applications.
-+ [Sockjs](https://github.com/sockjs/sockjs-node) server has been installed on you system.
-+ [Express](http://expressjs.com/) a web application framework for node, also installed on your system.
-+ You are proficient in developing node.js applications.
+* [Node.js](http://howtonode.org/how-to-install-nodejs) is installed on your system to build node applications.
+* [Sockjs](https://github.com/sockjs/sockjs-node) server has been installed on you system.
+* [Express](http://expressjs.com/) a web application framework for node, also installed on your system.
+* You are proficient in developing node.js applications.
 
 == Setting up the app locally
 
