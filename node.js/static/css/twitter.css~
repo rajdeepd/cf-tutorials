@@ -1,0 +1,98 @@
+/*
+	Name: Node.js Whiteboard
+	Date: Oct 2012
+	Description: Layout for Whiteboard based on canvas
+	Version: 1.0
+	Author: Bhavani Shankar
+*/ 
+
+/* Global */
+
+/* body */
+body {
+	color: #333333;
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+/* anchors */
+a { display: inline-block; }
+
+/* Quotes */
+blockquote {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F9F9F9;
+    border-color: #41B7DB rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1); 
+    border-style: solid;
+    border-width: 3px 1px 1px 1px;
+    color: rgba(0, 0, 0, 0.75);
+    font: italic 1.05em/1.55em "Skolar Italic","Times New Roman",serif;
+    margin: 0px 20px;
+    padding: 1em 2em;
+}	
+
+/* horizontal ruler */
+hr {
+	border-top: 1px solid @grayLighter;
+	margin: 0px;
+	border-style: solid 1px;
+}
+
+/* -end of Global */
+
+
+/*Side bar holding icons for shapes*/ 
+.sidebar-nav {
+	height:492px;
+	margin-bottom: 0px;
+	border-width: 8px 1px 1px 1px;
+	/*border-color: #41B7DB rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);*/
+}
+
+/* container divs */
+.well {
+	background-color: #F9F9F9;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	margin-left:0px;
+	padding: 0;
+}
+
+.row-fluid [class*="span"] {
+		margin-left:0px;
+}
+
+.navbar .brand {
+	color:#0088CC;
+}
+
+/*chat text box */
+.box, form input {
+  width: 100%;
+  padding: 0px;
+}
+
+.span2.right {
+	float:right;	
+}
+
+.box {
+  margin-bottom: 0;
+  height: 470px;
+  overflow: auto;
+}
+
+form input {
+  height: 30px;
+}
+
+.bottom {
+	 border-color: #41B7DB rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1); 
+    border-style: solid;
+    border-width: 2px 1px 1px 1px;
+}

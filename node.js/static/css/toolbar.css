@@ -1,0 +1,56 @@
+
+.ui-toolbar {
+    float: left;
+    width: 64px;
+    height: 100%;
+    margin: 0px 10px 0px 1px;
+    border: 1px solid #ccc;
+    background-color:  #FAFAFA
+}
+
+.ui-toolbar .box-title {
+    height: 20px;
+    color: #fff;
+    background-color: #0088CC;
+    padding-left:7px;
+}
+
+.ui-toolbar .shape {
+    background-image: url('/static/images/default.png');
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.ui-toolbar .shape.rectangle {
+    background-image: url('/static/images/rectangle_g.png');
+}
+
+.ui-toolbar .shape.triangle {
+    background-image: url('/static/images/triangle_g.png');
+}
+
+.ui-toolbar .shape.circle {
+    background-image: url('/static/images/circle_g.png');
+}
+
+.ui-toolbar .shape.line {
+    background-image: url('/static/images/line_g.png');
+}
+
+.ui-toolbar .shape.arc {
+    background-image: url('/static/images/arc_g.png');
+}
+
+.ui-toolbar .shape.arrow {
+    background-image: url('/static/images/arrow_g.png');
+}
+
+.ui-toolbar .shape.arrow_bidir {
+    background-image: url('/static/images/arrow_bidir_g.png');
+}
+.ui-toolbar .shape.selected {
+    /*border: 1px solid #0088CC;*/
+    background-color: #9FC6D8;
+}

@@ -1,0 +1,120 @@
+/*
+	Name: Node.js Whiteboard
+	Date: Oct 2012
+	Description: Layout for Whiteboard based on canvas
+	Version: 1.0
+	Author: Bhavani Shankar
+*/ 
+
+/* Global */
+body {
+color:#333;
+}
+
+a {
+display:inline-block;
+}
+
+blockquote {
+-moz-border-bottom-colors:none;
+-moz-border-image:none;
+-moz-border-left-colors:none;
+-moz-border-right-colors:none;
+-moz-border-top-colors:none;
+background-color:#F9F9F9;
+color:rgba(0,0,0,0.75);
+font:italic 1.05em/1.55em "Skolar Italic","Times New Roman",serif;
+border-color:#41B7DB rgba(0,0,0,0.1) rgba(0,0,0,0.1);
+border-style:solid;
+border-width:3px 1px 1px;
+margin:0 20px;
+padding:1em 2em;
+}
+
+hr {
+border-top:1px solid @grayLighter;
+border-style:solid 1px;
+margin:0;
+}
+
+.box-title {
+	height: 20px;
+	color: #fff;
+	background-color: #0088CC;
+	padding-left: 15px;
+}
+.top-bar {
+	height: 50px;
+	display: block;
+	background-color: #FAFAFA;
+   background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
+   background-repeat: repeat-x;
+   line-height:120%; 
+   font-size: 18px;
+   -moz-box-shadow: 10px 5px 5px #888;
+	-webkit-box-shadow: 10px 5px 5px #888;
+	box-shadow: 10px 5px 5px #888;
+
+}
+.top-bar .appname {
+	float: left;
+	padding: 13px 5px 5px 10px;
+	color: #0088CC;
+}
+
+.top-bar .logintext {
+	float: right;
+	padding: 13px 10px 5px 5px;
+	font-size: 14px; 
+}
+.top-bar .logintext #username {
+	color: #0088CC;
+}	
+
+.whiteboard-container {
+	
+	height: 500px;
+	margin-bottom: 10px;
+	margin-top: 7px;
+}
+
+.left-bar {
+	float: left;
+	width: 70px;
+	height: 100%;
+	margin: 0px 10px 0px 1px;
+	border: 1px solid #ccc;
+	background-color:  #FAFAFA
+}
+.canvas-div {
+	width:850px;
+	max-width: 850px;
+	float: left;
+	border: 1px solid #ccc;
+	background-color: #FAFAFA
+}
+.canvas-bg {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+#chat-div {
+	width: 200px;
+	float: right;
+	border: 1px solid #ccc;
+	height: 100%;
+	margin-right: 5px;
+	background-color:  #FAFAFA
+}
+#chat-div textarea {
+	width:93%;
+	border: 1px solid #ccc;
+	resize: none;
+	height: 26px;
+	overflow-y: auto; 
+}
+#chat-text {
+	height: 89%;	
+	padding: 0px 5px 0px 5px 
+}
+
