@@ -32,9 +32,9 @@ Before you get started, you need the following:
 3. Drag and drop the application onto the Cloud Foundry WTP instance, and specify that you need a PostgreSQL service and 512M of RAM.
 
 ### You can use the vmc command line tool, too.
-1. Run `mvn clean install` on the command line from the root of the project to create a binary. 
+1. Run `mvn clean install war:war` on the command line from the root of the project to create a binary. 
 2. From the root of the project, run `vmc --path target/html5expense-1.0.0-BUILD-SNAPSHOT.war push`.
 
 ### You should also be able to deploy the project using the Maven Cloud Foundry plugin, which is already configured.
-1. From the root of the project, run `mvn clean install`.
+1. From the root of the project, run `mvn clean install war:war`.
 2. Then run `mvn cf:push -Dcf.username=****** -Dcf.password=**** -Dcf.services=****** -Dcf.url=****` here set your Cloud Foundry username, password, service and application url.
