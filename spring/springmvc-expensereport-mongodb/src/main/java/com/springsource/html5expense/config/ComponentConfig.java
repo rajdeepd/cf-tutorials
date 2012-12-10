@@ -44,7 +44,8 @@ public class ComponentConfig {
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        InternalResourceViewResolver internalResourceViewResolver = 
+                new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/views/");
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;

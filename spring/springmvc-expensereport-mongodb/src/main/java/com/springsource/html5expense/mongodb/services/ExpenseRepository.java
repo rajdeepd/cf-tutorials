@@ -65,8 +65,8 @@ public class ExpenseRepository implements ExpenseService {
         stateList.add(State.NEW);
         stateList.add(State.OPEN);
         stateList.add(State.IN_REVIEW);
-        return mongoTemplate.find(new Query(Criteria.where("state").in(stateList)), Expense.class,
-                EXPENSE_COLLECTION_NAME);
+        return mongoTemplate.find(new Query(Criteria.where("state").in(stateList)),
+                Expense.class, EXPENSE_COLLECTION_NAME);
     }
 
     @Override

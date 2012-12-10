@@ -32,7 +32,7 @@ $(document).ready(function () {
    
    //Add Expense - Event Handler declaration.
 	$("button.add-expense-btn").on("click", function () {
-		   $.post(utils.url('/expenses'), {description : $(".textbox-a").val(), expenseTypeId : $("#expenseTypeId").val(), amount : $("input#amount").val()} , function(data) {
+		   $.post(utils.url('/expense'), {description : $(".textbox-a").val(), expenseTypeId : $("#expenseTypeId").val(), amount : $("input#amount").val()} , function(data) {
 			   $(".textbox-a").val("");
 			   $("#expenseTypeId").val("");
 			   $("input#amount").val("");
@@ -42,7 +42,7 @@ $(document).ready(function () {
 	
 	//Update an Expense
 	$("button.edit-expense-btn").on("click", function () {
-		   $.post(utils.url('/expenses/'+$("input#expenseload").val()), {_method:"PUT", expenseId : $("input#expenseload").val(), description : $(".textbox-a").val(), expenseTypeId : $("#expenseTypeId").val(), amount : $("input#amount").val()} , function(data) {
+		   $.post(utils.url('/expense/'+$("input#expenseload").val()), {_method:"PUT", expenseId : $("input#expenseload").val(), description : $(".textbox-a").val(), expenseTypeId : $("#expenseTypeId").val(), amount : $("input#amount").val()} , function(data) {
 			   $("a[data-tab=myExpenseContainer]").click();
 		   });
 	});
@@ -58,7 +58,7 @@ $(document).ready(function () {
 	
 	//Load pending expenses
 	var loadApprovalPendingExpenses = function (){
-		$.getJSON(utils.url('/expenses/approvals'), function(jsonResponse) {
+		$.getJSON(utils.url('/expense/approvals'), function(jsonResponse) {
 			   var expenseList = "";
 			   $.each(jsonResponse, function () {
 			      var self = this;
@@ -80,7 +80,7 @@ $(document).ready(function () {
 	$("table#approvalTable").on("change","select.test", function (){
 		var self = $(this);
 		console.log($(".expenseid").val());
-		$.post(utils.url('/expenses/'+$.trim(self.parents("tr").children("td.expenseid").text()) +'/state/'+$(this).val()),{_method:"PUT"}, function(jsonResponse) {
+		$.post(utils.url('/expense/'+$.trim(self.parents("tr").children("td.expenseid").text()) +'/state/'+$(this).val()),{_method:"PUT"}, function(jsonResponse) {
 			$("a[data-tab=approvalsContainer]").click();
 			});
 		
@@ -91,7 +91,7 @@ $(document).ready(function () {
 	$("table#expenseTable").on("click","a.bg-edit-b", function(evt){
 		   evt.preventDefault();
 		   var self = $(this);
-				$.getJSON(utils.url('/expenses/'+self.attr('id')), function(jsonResponse) {
+				$.getJSON(utils.url('/expense/'+self.attr('id')), function(jsonResponse) {
 					$(".textbox-a").val(jsonResponse.description);
 					$("#expenseTypeId").val(jsonResponse.expenseType.expenseTypeId);
 					$("input#amount").val(jsonResponse.amount);
@@ -106,7 +106,7 @@ $(document).ready(function () {
 	$("table#expenseTable").on("click","a.bg-cross-b", function(evt){
 		   evt.preventDefault();
 		   var self = $(this);
-		    $.post(utils.url('/expenses/'+self.attr('id')+'/'), {_method:'DELETE'}, function() {
+		    $.post(utils.url('/expense/'+self.attr('id')+'/'), {_method:'DELETE'}, function() {
 				$("a[data-tab=myExpenseContainer]").click();
 			});	   
     });

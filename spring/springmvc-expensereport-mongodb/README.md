@@ -21,8 +21,8 @@ Before you get started, you need the following:
 2. Select project and right click on it, select **Run As->Maven build**. Now enter the goal as **clean install**.
 3. Drag and drop the application onto the vfabric tc server.
 
-### You can use the vmc command line tool, too.
-1. Run `mvn clean install tomcat:run` on the command line from the root of the project to run on tomcat server. 
+### You can also use mvn to run it from command line tool.
+1. Run `mvn clean install tomcat:run` on the command line from the root of the project to run on tomcat server and access the application at [http://localhost:8080/springmvc-expensereport-mongodb/](http://localhost:8080/springmvc-expensereport-mongodb/). 
 
 ## Deployment to Cloud Foundry:
 ### From an Eclipse environment like the SpringSource Tool Suite equipped with the m2e and Cloud Foundry WTP connector support:
