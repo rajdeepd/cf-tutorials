@@ -1,0 +1,63 @@
+<div class="nav-btns">
+  <%= link_to "New Expense",new_expense_path,:class => "btn-a" %>
+  <%= link_to "Expenses",expenses_path,:class => "btn-a" %>
+</div>
+<% if @expenses.present? %>
+    <table class="table-a mtop80">
+      <thead>
+      <tr>
+        <td class="td-a">
+          <h5 class="label-3">Date</h5>
+        </td>
+        <td class="td-b">
+          <h5 class="label-3">Type</h5>
+        </td>
+        <td class="td-c">
+          <h5 class="label-3">Description</h5>
+        </td>
+        <td class="td-c">
+          <h5 class="label-3">Amount</h5>
+        </td>
+        <td  class="td-d">
+          <h5 class="label-3">Action</h5>
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+      <% @expenses.each do |expense| %>
+          <!--starting-->
+          <tr>
+            <td>
+              <h5 class="label-4"><%=  expense.date %></h5>
+            </td>
+            <td>
+              <h5 class="label-4"><%= truncate(expense.expense_type_id, :length => 20) %></h5>
+            </td>
+            <td class="fixed-width">
+              <h5 class="label-4">
+                <%= truncate(expense.description, :length => 50) %>
+              </h5>
+            </td>
+            <td class="fixed-width">
+              <h5 class="label-4">
+                <%= expense.amount %>
+              </h5>
+            </td>
+            <td>
+              <h5 class="label-4">
+                <i class="alt-b label-6">
+                  <%= link_to(edit_expense_path(expense.id), :class => "bg-edit-b") do %>
+                      <img class="clip-b-img" src="<%= asset_path 'edit-a.png' %>">
+                  <% end %>
+                  <%= link_to get_cross_image.html_safe, expense_path(expense.id), :class => "bg-cross-b", :confirm => "Are you sure want to delete?", :method => :delete %>
+                </i>
+              </h5>
+            </td>
+          </tr>
+          <!--end-->
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h1>No Expense added</h1>
+<% end %>

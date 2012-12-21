@@ -1,0 +1,24 @@
+<%= form_tag expense_path ,:method => :put  do%>
+    <div class="action-a">
+      <%= label_tag "description",'Description' ,:class => "label-name" %>
+      <%= text_area_tag "expense[description]",@expense.description, :class => "textbox-a", :placeholder => "description" %>
+    </div>
+
+    <div class="action-a">
+      <%= label_tag "amount", 'Amount',:class => "label-name" %>
+      <%= text_field_tag "expense[amount]",@expense.amount, :class => "textbox-a dd-b flt-left mleft0", :style => "width: 185px;", :placeholder => "Amount like 210.50",:default => @expense.amount %>
+    </div>
+
+    <div class="action-a">
+      <%= label_tag "expense_type", 'Expense Type',:class => "label-name" %>
+      <%= select_tag "expense[expense_type]",options_for_select(['Health','Education','Sports','Travel'])%>
+
+    </div>
+
+    <div class="action-a">
+      <%= label_tag "date", 'Generated on',:class => "label-name" %>
+      <input type="text" name="expense[date]" placeholder="DD/MM/YY" id="date-field" class="textbox-a dd-b mleft0" style="width: 185px; cursor: pointer;" readonly="readonly" value="<%= @expense.date %>" />
+    </div>
+
+    <%= submit_tag "Save", :class => "btn-a add-expense-btn" %>
+<% end %>
