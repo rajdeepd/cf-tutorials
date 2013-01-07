@@ -19,7 +19,8 @@ public class CloudDataSourceConfiguration implements DataSourceConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        Collection<RdbmsServiceInfo> psqlServiceInfo = cloudEnvironment.getServiceInfos(RdbmsServiceInfo.class);
+        Collection<RdbmsServiceInfo> psqlServiceInfo = cloudEnvironment
+                .getServiceInfos(RdbmsServiceInfo.class);
         RdbmsServiceCreator dataSourceCreator = new RdbmsServiceCreator();
         return dataSourceCreator.createService(psqlServiceInfo.iterator().next());
     }

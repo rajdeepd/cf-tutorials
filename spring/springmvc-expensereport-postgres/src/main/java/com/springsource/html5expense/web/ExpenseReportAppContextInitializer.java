@@ -4,7 +4,8 @@ import org.cloudfoundry.runtime.env.CloudEnvironment;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
-public class ExpenseReportAppContextInitializer implements ApplicationContextInitializer<AnnotationConfigWebApplicationContext> {
+public class ExpenseReportAppContextInitializer implements
+        ApplicationContextInitializer<AnnotationConfigWebApplicationContext> {
 
     private CloudEnvironment cloudEnvironment = new CloudEnvironment();
 

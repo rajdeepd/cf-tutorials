@@ -26,11 +26,6 @@ public class Expense {
     private State state = State.NEW;
 
     private Date expenseDate;
-    
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "userId", nullable = false)
-    @OneToOne
-    private User user;
 
     @OneToOne
     private ExpenseType expenseType;
@@ -39,22 +34,20 @@ public class Expense {
 
     }
 
-    public Expense(String description, ExpenseType expenseType, Date expenseDate,
-      Double amount, User user) {
+    public Expense(String description, ExpenseType expenseType, Date expenseDate, Double amount) {
         this.description = description;
         this.expenseType = expenseType;
         this.expenseDate = expenseDate;
         this.amount = amount;
-        this.user = user;
     }
 
     public String getDescription() {
         return description;
-     }
+    }
 
     public void setDescription(String description) {
         this.description = description;
-     }
+    }
 
     public State getState() {
         return state;
@@ -94,13 +87,5 @@ public class Expense {
 
     public void setExpenseDate(Date expenseDate) {
         this.expenseDate = expenseDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

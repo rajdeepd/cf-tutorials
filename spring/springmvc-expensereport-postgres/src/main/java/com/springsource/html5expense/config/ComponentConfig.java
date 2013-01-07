@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,15 +20,14 @@ import com.springsource.html5expense.controllers.ExpenseController;
 import com.springsource.html5expense.model.Expense;
 import com.springsource.html5expense.services.JpaExpenseService;
 
-
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = {JpaExpenseService.class,
-        ExpenseController.class, Expense.class })
-@ImportResource("/WEB-INF/spring-security.xml")
+@ComponentScan(basePackageClasses = { JpaExpenseService.class, ExpenseController.class,
+        Expense.class })
 public class ComponentConfig {
 
-    @Autowired private DataSourceConfiguration dataSourceConfiguration;
+    @Autowired
+    private DataSourceConfiguration dataSourceConfiguration;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -38,7 +36,7 @@ public class ComponentConfig {
         emfb.setDataSource(dataSourceConfiguration.dataSource());
         emfb.setJpaPropertyMap(jpaPropertyMap());
         emfb.setJpaDialect(new HibernateJpaDialect());
-        emfb.setPackagesToScan(new String[]{Expense.class.getPackage().getName()});
+        emfb.setPackagesToScan(new String[] { Expense.class.getPackage().getName() });
         return emfb;
     }
 
@@ -61,7 +59,7 @@ public class ComponentConfig {
         transactionManager.setJpaPropertyMap(jpaProperties);
         return transactionManager;
     }
-    
+
     public Map<String, String> jpaPropertyMap() {
         Map<String, String> map = new HashMap<String, String>();
         map.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");

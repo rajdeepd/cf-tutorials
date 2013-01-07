@@ -21,8 +21,10 @@ public class LocalDataSourceConfiguration implements DataSourceConfiguration {
     @Bean
     public DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", propertyResolver.getProperty("postgres.host"),
-                 propertyResolver.getProperty("postgres.port"), propertyResolver.getProperty("postgres.db.name")));
+        dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s",
+                propertyResolver.getProperty("postgres.host"),
+                propertyResolver.getProperty("postgres.port"),
+                propertyResolver.getProperty("postgres.db.name")));
         dataSource.setDriverClass(org.postgresql.Driver.class);
         dataSource.setUsername(propertyResolver.getProperty("postgres.username"));
         dataSource.setPassword(propertyResolver.getProperty("postgres.password"));

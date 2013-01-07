@@ -22,7 +22,8 @@ public class JpaExpenseTypeService implements ExpenseTypeService {
     }
 
     public List<ExpenseType> getAllExpenseType() {
-        return getEntityManager().createQuery("from ExpenseType", ExpenseType.class).getResultList();
+        return getEntityManager().createQuery("from ExpenseType", ExpenseType.class)
+                .getResultList();
     }
 
     public ExpenseType getExpenseTypeById(Long id) {
